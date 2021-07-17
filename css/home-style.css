@@ -1,0 +1,68 @@
+
+* {
+    font-family: cursive;
+}
+body, html {
+    height: 100%;
+    /* The image used */
+    background-image: url("/photos/photo-16.jpg");
+    /* Full height */
+    height: 100%; 
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+  
+
+.title:hover {
+    background-color: #ffffff;
+}
+.title{
+    color: rgb(182, 63, 8); 
+    -webkit-text-stroke: 1px black; 
+    display: inline-block;
+    line-height: 3.6em;
+    background-color:#f5f7fad3;
+    height: 100%;
+    width: 100%;
+    opacity: 0.8;
+    margin: 120px;
+    padding: 100px;
+    border-radius: 10px;
+}
+
+
+ul {
+    font-size: 20px;
+    display: table;
+    margin-left: auto;
+    margin-right: 0em;
+}
+
+li {
+    display: inline-block;
+    border: 3px solid #FFFFFF;
+    border-radius: 10px;
+    margin-right:30px;
+    padding: 0.2rem;
+    background-color: #f5f7fa;
+}
+
+#event-bar {
+    text-decoration:none;
+    color: rgb(182, 63, 8);
+}
+/* link style on-mouse-over */
+#event-bar:hover{
+    color:#ffffff;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+/* button style on-mouse-over */
+li:hover{
+    border: 3px solid #FFFFFF;
+    border-radius: 10px;
+    background-color: #f08a38;
+}
