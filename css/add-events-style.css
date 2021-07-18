@@ -29,7 +29,7 @@ header {
 }
 
 .event-items::before {
-    content: url("/photos/event-icon-colored.svg");
+    content: url("https://visualpharm.com/assets/710/Event-595b40b65ba036ed117d45ec.svg");
     display: inline-block;
     height: 40px;
     width: 40px;
