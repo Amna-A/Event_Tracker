@@ -157,12 +157,22 @@ hr {
 
 .remove-button{
     float: right;
+    border-radius: 10px;
     background: rgb(226, 115, 115);
     font-size:inherit;
     padding:inherit;
 }
 .edit-button{
     float: right;
+    border-radius: 10px;
+    margin-right: 10px;
+    background: rgb(96, 157, 192);
+    font-size:inherit;
+    padding:inherit;
+}
+.edit-button-update{
+    float: right;
+    border-radius: 10px;
     margin-right: 10px;
     background: rgb(96, 192, 112);
     font-size:inherit;
@@ -170,4 +180,13 @@ hr {
 }
 .error {
     color: rgb(245, 12, 12);
+}
+
+#update-event , #update-date{
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 18px;
 }

@@ -28,6 +28,12 @@ function getEvent(e){
         const li = document.createElement('li')
         //add class for styling
         li.classList.add('event-items');
+        li.setAttribute("id", "event-items");
+
+        //add label for event name & date
+        const nameLabel = document.createElement('label')
+        const dateLabel = document.createElement('label')
+
 
         //add remove button
         const removeButton = document.createElement('button')
@@ -45,7 +51,12 @@ function getEvent(e){
         
         
         if (li !== null){
-            li.appendChild(document.createTextNode(`${eventName.value}  -  ${dueDate.value}`))
+            //nameLabel.appendChild(document.createTextNode(`${eventName.value}  -  ${dueDate.value}`))
+            nameLabel.innerText = eventName.value + "  on  "
+            dateLabel.innerText = dueDate.value
+            li.appendChild(nameLabel)
+            li.appendChild(dateLabel)
+            //li.appendChild(document.createTextNode(`${eventName.value}  -  ${dueDate.value}`))
         }
         li.appendChild(removeButton)
         li.appendChild(editButton)
@@ -55,21 +66,104 @@ function getEvent(e){
         eventName.value = ''
         dueDate.value = ''
 
-        //remove event function
-        removeButton.setAttribute('onclick','deleteEvent(this);'); 
+        //add remove event function
+        //removeButton.setAttribute('onclick','deleteEvent(this);'); 
+        removeButton.onclick = deleteEvent
 
-        //edit event function 
+        //add edit event function 
         editButton.setAttribute('onclick', 'editEvent(this);')  
+      
+        //editButton.addEventListener('click', editEvent(this))
+        //console.log(li)
     }
 }
 // Function to remove items
-function deleteEvent(el) {
-    const element = el.parentNode
+function deleteEvent() {
+    const element = this.parentNode
     element.remove()
 }
 //function to edit the event name and date
 function editEvent(el){
 
+    const e = el   
+    //const buttonText  = button.innerText
+    // const fullText = button.parentElement.innerText;
+    // const eventName = fullText.substr(0,fullText.indexOf("-"))
+    // // eventName.contentEditable = true
+
+    const listItem = e.parentNode
+    const labels = listItem.querySelectorAll("label")
+    const namelabel = labels[0]
+    const datelabel = labels[1]
+
+    //replace event name label with input
+    const nameInput = document.createElement('input')
+    nameInput.setAttribute('type', 'text')
+    nameInput.setAttribute('placeholder' , namelabel.innerText.substr(0,namelabel.innerText.indexOf("o")))
+    nameInput.setAttribute('id', 'update-event')
+
+    //replace event date with date input
+    const dateInput = document.createElement('input')
+    dateInput.setAttribute('type', 'date')
+    dateInput.setAttribute('placeholder' , datelabel.innerHTML)
+    dateInput.setAttribute('id', 'update-date')
+
+    //replace name
+    //nameInput.innerHTML = namelabel.innerHTML
+    namelabel.parentNode.insertBefore(nameInput, namelabel);
+    namelabel.parentNode.removeChild(namelabel);
+
+    //replace date
+    //dateInput.innerHTML = datelabel.innerHTML
+    datelabel.parentNode.insertBefore(dateInput, datelabel);
+    datelabel.parentNode.removeChild(datelabel);
+
+
+    //change edit text and class
+    e.classList.add("edit-button-update");
+    e.classList.remove("edit-button");
+    e.innerText = 'done'
+
+    e.removeAttribute('editEvent(this)')
+    e.setAttribute('submit','ToggleEditButton(nameInput, dateInput)')
+   
+
+    // const b = document.querySelector('.edit-button-update')
+    console.log(e)
+    //this.onclick = ToggleEditButton(nameInput, dateInput)
+}
+
+function ToggleEditButton(nameInput, dateInput){
+
+    console.log("inside toggle name input: ")
+    //console.log(nameInput.parentNode)
+    const b = document.querySelector('.edit-button-update')
+
+    //if ( (nameInput.value == '' || nameInput.value !== null) && (dateInput.value !== '' || dateInput.value !==null)){
+
+    const newNameLabel = document.createElement('label')
+    newNameLabel.innerText = nameInput.value
+    nameInput.parentNode.insertBefore(newNameLabel, nameInput)
+    nameInput.parentNode.removeChild(nameInput);
+
+    const newDateLabel = document.createElement('label')
+    newDateLabel.innerText = dateInput.value
+    dateInput.parentNode.insertBefore(newDateLabel,dateInput)
+    dateInput.parentNode.removeChild(dateInput)
+
+    //}
+    b.removeAttribute('ToggleEditButton(nameInput, dateInput)')
+    b.setAttribute('onclick','editEvent(b)')
+ 
+    //b.onclick = editEvent
+
+    //change edit text and class
+    b.innerText = 'edit'
+    b.classList.add("edit-button");
+    console.log(b)
+    b.classList.remove("edit-button-update");
+   
+   
 }
 
 //remove error msg when user type needed fields
