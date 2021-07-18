@@ -72,9 +72,6 @@ function getEvent(e){
 
         //add edit event function 
         editButton.setAttribute('onclick', 'editEvent(this);')  
-      
-        //editButton.addEventListener('click', editEvent(this))
-        //console.log(li)
     }
 }
 // Function to remove items
@@ -84,7 +81,6 @@ function deleteEvent() {
 }
 //function to edit the event name and date
 function editEvent(el){
-
     const e = el   
     //const buttonText  = button.innerText
     // const fullText = button.parentElement.innerText;
@@ -124,25 +120,21 @@ function editEvent(el){
     e.classList.remove("edit-button");
     e.innerText = 'done'
 
-    e.removeAttribute('editEvent(this)')
-    e.setAttribute('submit','ToggleEditButton(nameInput, dateInput)')
+    e.removeAttribute('onclick')
+    e.setAttribute('onclick','ToggleEditButton()')
    
-
-    // const b = document.querySelector('.edit-button-update')
-    console.log(e)
-    //this.onclick = ToggleEditButton(nameInput, dateInput)
 }
 
-function ToggleEditButton(nameInput, dateInput){
+function ToggleEditButton(){
 
     console.log("inside toggle name input: ")
     //console.log(nameInput.parentNode)
     const b = document.querySelector('.edit-button-update')
-
-    //if ( (nameInput.value == '' || nameInput.value !== null) && (dateInput.value !== '' || dateInput.value !==null)){
+    const nameInput = document.getElementById('update-event')
+    const dateInput = document.getElementById('update-date')
 
     const newNameLabel = document.createElement('label')
-    newNameLabel.innerText = nameInput.value
+    newNameLabel.innerText = nameInput.value + "  on  "
     nameInput.parentNode.insertBefore(newNameLabel, nameInput)
     nameInput.parentNode.removeChild(nameInput);
 
@@ -152,7 +144,7 @@ function ToggleEditButton(nameInput, dateInput){
     dateInput.parentNode.removeChild(dateInput)
 
     //}
-    b.removeAttribute('ToggleEditButton(nameInput, dateInput)')
+    b.removeAttribute('onclick')
     b.setAttribute('onclick','editEvent(b)')
  
     //b.onclick = editEvent
@@ -160,7 +152,9 @@ function ToggleEditButton(nameInput, dateInput){
     //change edit text and class
     b.innerText = 'edit'
     b.classList.add("edit-button");
-    console.log(b)
+
+    console.log(b.parentNode)
+
     b.classList.remove("edit-button-update");
    
    
