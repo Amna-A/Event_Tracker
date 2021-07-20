@@ -159,8 +159,8 @@ hr {
     float: right;
     border-radius: 10px;
     background: rgb(226, 115, 115);
-    font-size:inherit;
-    padding:inherit;
+    font-size:18px;
+    padding:0.1rem;
 }
 .remove-button:hover{
     background-color: rgb(253, 124, 124);
@@ -171,7 +171,7 @@ hr {
     margin-right: 10px;
     background: rgb(96, 157, 192);
     font-size:18px;
-    padding:inherit;
+    padding:0.1rem;
 }
 .edit-button:hover{
     background-color:rgb(106, 176, 216);
@@ -182,7 +182,7 @@ hr {
     margin-right: 10px;
     background: rgb(96, 192, 112);
     font-size:18px;
-    padding:inherit;
+    padding:0.1rem;
 }
 .error {
     color: rgb(245, 12, 12);
