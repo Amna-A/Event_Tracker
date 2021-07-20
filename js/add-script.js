@@ -72,7 +72,17 @@ function getEvent(e){
 
         //add edit event function 
         editButton.setAttribute('onclick', 'editEvent(this);')  
+
     }
+}
+function handleSubmit() {
+    const eventName = document.getElementById('event').value
+    const eventDate = document.getElementById('date').value
+
+    localStorage.setItem('EVENT', eventName)
+    localStorage.setItem('DATE',eventDate)
+
+    return false
 }
 // Function to remove items
 function deleteEvent() {

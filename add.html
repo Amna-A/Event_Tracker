@@ -28,21 +28,21 @@
 
     <section class="container">
      
-        <form id="myform" onsubmit="">
+        <form id="myform" name="mainForm" action="events.html" method="POST">
             <h1>Add Events to Start Tracking <hr></h1>
             <div class="msg"></div>
             <div>
                 <label for="event">Event: </label>
-                <input type="text" id="event" placeholder="Eg. Networking event">
+                <input type="text" id="event" name = "event" placeholder="Eg. Networking event">
                 <span class="error"><p id="event_error"></p></span>
             </div>
             <div>
                 <label for="date">Date: </label>
-                <input type="date" id="date">
+                <input type="date" id="date" name="date">
                 <span class="error"><p id="date_error"></p></span>
                 
             </div>
-            <input type="submit" class="button" value="Add Event">
+            <input type="submit" onclick="handleSubmit()" class="button" value="Add Event" >
 
         </form>
     
@@ -53,7 +53,9 @@
     
 
     </section>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="js/add-script.js"></script>
+    <script src="js/events.js"></script>
 </body>
 
 </html>
